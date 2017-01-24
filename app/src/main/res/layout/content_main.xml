@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:paddingBottom="50dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main"
+    android:background="#ffffff">
+
+
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="120dp"
+        android:id="@+id/bg"
+        android:padding="5dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#dddddd" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="SDK Sample App"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:id="@+id/textView"
+        android:textColor="#009FDF"
+        android:layout_below="@+id/imageView3"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/big_logo"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_alignLeft="@+id/check"
+        android:layout_alignStart="@+id/check" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/logView"
+        android:gravity="left|center_vertical"
+        android:layout_gravity="center"
+        android:text="Stand by..."
+        android:textSize="15dp"
+        android:textColor="#000000"
+        android:paddingLeft="8dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Track Event"
+        android:id="@+id/button"
+        android:onClick="buttonOnClick"
+        android:background="@drawable/buttonlayout"
+        android:textColor="#000000"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Attribution Values"
+        android:id="@+id/textView2"
+        android:textColor="#009FDF"
+        android:textSize="15dp"
+        android:layout_above="@+id/bg"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/check"
+        android:src="@drawable/check"
+        android:visibility="visible"
+        android:layout_above="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event was tracked successfully!"
+        android:id="@+id/textView3"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000000" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/logo"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SDK version"
+        android:id="@+id/sdk_v"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
