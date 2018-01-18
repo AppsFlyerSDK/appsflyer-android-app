@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.3"
     defaultConfig {
         applicationId 'android.appsflyer.sampleapp'
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -16,8 +16,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         applicationVariants.all { variant ->
-            variant.outputs.each { output ->
-                output.outputFile = file("$project.buildDir/apk/android-appsflyer-sampleapp.apk")
+            variant.outputs.all { output ->
+                output.outputFileName = file("$project.buildDir/apk/android-appsflyer-sampleapp.apk")
             }
         }
     }
@@ -27,10 +27,10 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'com.android.support:design:23.2.0'
-    compile 'com.google.android.gms:play-services-base:9.4.0'
-    compile 'com.google.android.gms:play-services-basement:9.4.0'
-    compile 'com.google.android.gms:play-services-gcm:9.4.0'
-    compile 'com.appsflyer:af-android-sdk:4.6.7@aar'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.google.android.gms:play-services-base:11.8.0'
+    compile 'com.google.android.gms:play-services-basement:11.8.0'
+    compile 'com.google.android.gms:play-services-gcm:11.8.0'
+    compile 'com.appsflyer:af-android-sdk:4.8.6@aar'
 }
