@@ -1,103 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="android.appsflyer.sampleapp">
+    package="appsflyer.com.appsflyerandroidsampleapp">
 
-    <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>-->
 
-    <!--AppsFlyer: enable these 3 permissions to enable access to Appsflyer's API-->
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
-    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
-
-    <!--AppsFlyer: Push notifications permissions. Required for the collection of your GCM Project ID-->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <permission android:name="android.appsflyer.sampleapp.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
-    <uses-permission android:name="android.appsflyer.sampleapp.permission.C2D_MESSAGE" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 
+    <!-- android:name -  Must be set to the .AFApplication class to start tracker from a Application level -->
 
     <application
+        android:name=".AFApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-        <activity
-            android:name=".Deeplink"
-            android:label="@string/title_activity_deeplink"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data
-                    android:scheme="http"
-                    android:host="aftest.com"/>
-<!--AppsFlyer:  to test this deep link, navigate to "http://app.appsflyer.com/android.appsflyer.sampleapp?pid=Blog&af_dp=http%3A%2F%2Faftest.com&af_force_dp=true" (make sure to change the package name in the path!)-->
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data
-                    android:scheme="aftest"/>
-<!--AppsFlyer:  to test this deep link, navigate to "http://app.appsflyer.com/android.appsflyer.sampleapp?pid=Blog&af_dp=aftest%3A%2F%2F&af_force_dp=true" (make sure to change the package name in the path!)-->
-            </intent-filter>
-        </activity>
-
-        <!--AppsFlyer: MultipleInstallBroadcastReceiver must be the first receiver within the <application> tag-->
-        <receiver
-            android:name="com.appsflyer.MultipleInstallBroadcastReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
-            </intent-filter>
-        </receiver>
-
-        <!--AppsFlyer: SingleInstallBroadcastReceiver doesn't have to be the first receiver within the <application> tag-->
+        <!-- AppsFlyer BroadcastReceiver Add here  -->
         <receiver
             android:name="com.appsflyer.SingleInstallBroadcastReceiver"
             android:exported="true">
+
             <intent-filter>
+                         
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
+                     
             </intent-filter>
         </receiver>
 
-        <!--AppsFlyer: Use a custom receiver in case you need to add internal logic to your onReceive-->
-            <!--android:name=".YOUR_RECEIVER"-->
-            <!--android:exported="true">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="com.android.vending.INSTALL_REFERRER" />-->
-            <!--</intent-filter>-->
-        <!--</receiver>-->
+        <!-- Use the link : https://appsflyertestapponelink.onelink.me/iIpC to test deep linking - or create your own link! -->
 
-        <receiver
-            android:name="com.google.android.gms.gcm.GcmReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <activity android:name=".Deeplink">
+            <intent-filter  android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https"
+                    android:host="appsflyertestapponelink.onelink.me"
+                    android:pathPrefix="/iIpC" />
             </intent-filter>
-        </receiver>
-        <service android:name="com.appsflyer.InstanceIDListener" android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"/>
-            </intent-filter>
-        </service>
-
+        </activity>
     </application>
 
 </manifest>

@@ -1,36 +1,37 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 26
     defaultConfig {
-        applicationId 'android.appsflyer.sampleapp'
-        minSdkVersion 15
-        targetSdkVersion 23
+        applicationId "appsflyer.com.appsflyerandroidsampleapp"
+        minSdkVersion 17
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        debug {
+        release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        applicationVariants.all { variant ->
-            variant.outputs.each { output ->
-                output.outputFile = file("$project.buildDir/apk/android-appsflyer-sampleapp.apk")
-            }
-        }
     }
-
+}
+// AppsFlyer - Add This Here:
+repositories {
+    mavenCentral()
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'com.android.support:design:23.2.0'
-    compile 'com.google.android.gms:play-services-base:9.4.0'
-    compile 'com.google.android.gms:play-services-basement:9.4.0'
-    compile 'com.google.android.gms:play-services-gcm:9.4.0'
-    compile 'com.appsflyer:af-android-sdk:4.6.7@aar'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+// AppsFlyer - Add This Here:
+    compile 'com.appsflyer:af-android-sdk:4.8.7@aar'
+    compile 'com.android.installreferrer:installreferrer:1.0'
+
 }
