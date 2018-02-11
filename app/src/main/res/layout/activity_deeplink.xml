@@ -27,7 +27,7 @@
     <TextView
         android:id="@+id/attributionText"
         android:layout_width="238dp"
-        android:layout_height="59dp"
+        android:layout_height="115dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
