@@ -1,4 +1,4 @@
-package appsflyer.com.appsflyerandroidsampleapp;
+package com.appsflyer.androidsampleapp;
 
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -6,25 +6,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.appsflyer.AppsFlyerConversionListener;
-import com.appsflyer.AppsFlyerLib;
+import com.appsflyer.*;
 
 import java.util.Map;
 
-public class Deeplink extends AppCompatActivity {
+  /** Test this deep link with the link : https://androidsampleapp.onelink.me/Pvqj */
+  /** run: $ adb shell am start -a android.intent.action.VIEW -d https://androidsampleapp.onelink.me/Pvqj */
 
 
 
-    /* Test this deep link with the link : https://appsflyertestapponelink.onelink.me/iIpC */
+public class DeepLink extends AppCompatActivity {
 
-    /* Best to check the link using adb from the emulator, or if you are testing on a test device send the link through email */
 
     final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deeplink);
+        setContentView(R.layout.activity_deep_link);
 
 
         /* Add this call to the tracker on each deep linked activity */
@@ -58,7 +57,7 @@ public class Deeplink extends AppCompatActivity {
                     attributionDataText += conversionData.get(attrName) + "\n";
 
                 }
-                    setAttributionText(attributionDataText);
+                setAttributionText(attributionDataText);
             }
 
             @Override
@@ -72,13 +71,13 @@ public class Deeplink extends AppCompatActivity {
 
     /* Used to display the deep link data returned from onAppOpenAttribution */
 
-    public void setAttributionText(final String i_data){
+    public void setAttributionText(final String data){
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 TextView attributionTextView = findViewById(R.id.attributionText);
-                attributionTextView.setText(i_data);
+                attributionTextView.setText(data);
             }
         } , 2500);
     }

@@ -1,4 +1,4 @@
-package appsflyer.com.appsflyerandroidsampleapp;
+package com.appsflyer.androidsampleapp;
 
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -8,21 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.appsflyer.AFInAppEventParameterName;
-import com.appsflyer.AFInAppEventType;
-import com.appsflyer.AppsFlyerConversionListener;
-import com.appsflyer.AppsFlyerLib;
+import com.appsflyer.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class MainActivity extends AppCompatActivity {
 
 
-    /*** Ignore -  Used for UI  ***/
-    public static String dataToShow = "";
     final Handler handler = new Handler();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,18 +43,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     /*** Ignore - used to display install data ***/
     public void SetInstallDataText(){
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 TextView installData = findViewById(R.id.installDataText);
-                installData.setText(dataToShow);
+                installData.setText(AFApplication.InstallConversionData);
             }
         } , 2500);
 
     }
-
 
 }

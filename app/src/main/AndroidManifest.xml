@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="appsflyer.com.appsflyerandroidsampleapp">
-
-
+    package="com.appsflyer.androidsampleapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- Optional : -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-
-    <!-- android:name -  Must be set to the .AFApplication class to start tracker from a Application level -->
 
     <application
         android:name=".AFApplication"
@@ -20,7 +16,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,11 +24,10 @@
             </intent-filter>
         </activity>
 
-        <!-- AppsFlyer BroadcastReceiver Add here  -->
         <receiver
             android:name="com.appsflyer.SingleInstallBroadcastReceiver"
             android:exported="true">
-
+                
             <intent-filter>
                          
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
@@ -41,17 +35,16 @@
             </intent-filter>
         </receiver>
 
-        <!-- Use the link : https://appsflyertestapponelink.onelink.me/iIpC to test deep linking - or create your own link! -->
-
-        <activity android:name=".Deeplink">
+        <activity android:name=".DeepLink">
             <intent-filter  android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https"
-                    android:host="appsflyertestapponelink.onelink.me"
-                    android:pathPrefix="/iIpC" />
+                    android:host="androidsampleapp.onelink.me"
+                    android:pathPrefix="/Pvqj" />
             </intent-filter>
+
         </activity>
     </application>
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="appsflyer.com.appsflyerandroidsampleapp.MainActivity">
+    tools:context="com.appsflyer.androidsampleapp.MainActivity">
+
 
     <Button
         android:id="@+id/trackEventButton"
@@ -68,8 +69,8 @@
 
     <TextView
         android:id="@+id/installDataText"
-        android:layout_width="190dp"
-        android:layout_height="113dp"
+        android:layout_width="342dp"
+        android:layout_height="152dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"

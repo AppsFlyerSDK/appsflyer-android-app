@@ -1,14 +1,8 @@
-package appsflyer.com.appsflyerandroidsampleapp;
+package com.appsflyer.androidsampleapp;
 
 import android.app.Application;
-import android.app.Dialog;
-import android.support.annotation.MainThread;
 import android.util.Log;
-import android.widget.TextView;
-
-import com.appsflyer.AppsFlyerConversionListener;
-import com.appsflyer.AppsFlyerLib;
-
+import com.appsflyer.*;
 import java.util.Map;
 
 
@@ -17,11 +11,13 @@ import java.util.Map;
  we would kindly ask you to submit any issues to support@appsflyer.com
  *********************************************************************/
 
+
+
 public class AFApplication extends Application {
 
 
+    private static final String AF_DEV_KEY = "AF_DEV_KEY";
 
-    private static final String AF_DEV_KEY = "<YOUR_AF_DEV_KEY>";
 
     @Override
     public void onCreate(){
@@ -37,17 +33,7 @@ public class AFApplication extends Application {
                 for (String attrName : conversionData.keySet()) {
                     Log.d(AppsFlyerLib.LOG_TAG, "attribute: " + attrName + " = " + conversionData.get(attrName));
                 }
-
-                /*** Ignore - used to display the install data on the screen ***/
-
-                final String install_type = "Install Type: " + conversionData.get("af_status") + "\n";
-                final String media_source = "Media Source: " + conversionData.get("media_source") + "\n";
-                final String install_time = "Install Time(GMT): " + conversionData.get("install_time") + "\n";
-                final String click_time = "Click Time(GMT): " + conversionData.get("click_time") + "\n";
-                final String is_first_launch = "Is First Launch: " + conversionData.get("is_first_launch") + "\n";
-                MainActivity.dataToShow += install_type + media_source + install_time + click_time + is_first_launch;
-
-                /***************************************************************/
+                setInstallData(conversionData);
             }
 
             @Override
@@ -81,5 +67,24 @@ public class AFApplication extends Application {
         AppsFlyerLib.getInstance().setDebugLog(true);
 
     }
+
+
+
+    /* IGNORE - USED TO DISPLAY INSTALL DATA */
+    public static String InstallConversionData =  "";
+    public static int sessionCount = 0;
+    public static void setInstallData(Map<String, String> conversionData){
+        if(sessionCount == 0){
+            final String install_type = "Install Type: " + conversionData.get("af_status") + "\n";
+            final String media_source = "Media Source: " + conversionData.get("media_source") + "\n";
+            final String install_time = "Install Time(GMT): " + conversionData.get("install_time") + "\n";
+            final String click_time = "Click Time(GMT): " + conversionData.get("click_time") + "\n";
+            final String is_first_launch = "Is First Launch: " + conversionData.get("is_first_launch") + "\n";
+            InstallConversionData += install_type + media_source + install_time + click_time + is_first_launch;
+            sessionCount++;
+        }
+
+    }
+
 
 }
