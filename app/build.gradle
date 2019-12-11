@@ -30,7 +30,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    compile 'com.appsflyer:af-android-sdk:4.8.7@aar'
+    compile 'com.appsflyer:af-android-sdk:5.0.0@aar'
     compile 'com.android.installreferrer:installreferrer:1.0'
 
 }

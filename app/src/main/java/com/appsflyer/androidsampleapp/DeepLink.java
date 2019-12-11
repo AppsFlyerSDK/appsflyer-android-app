@@ -1,12 +1,14 @@
 package com.appsflyer.androidsampleapp;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.appsflyer.*;
+import com.appsflyer.AppsFlyerConversionListener;
+import com.appsflyer.AppsFlyerLib;
+import com.appsflyer.AppsFlyerLibCore;
 
 import java.util.Map;
 
@@ -35,15 +37,15 @@ public class DeepLink extends AppCompatActivity {
 
             /* Returns the attribution data. Note - the same conversion data is returned every time per install */
             @Override
-            public void onInstallConversionDataLoaded(Map<String, String> conversionData) {
+            public void onConversionDataSuccess(Map<String, Object> conversionData) {
                 for (String attrName : conversionData.keySet()) {
-                    Log.d(AppsFlyerLib.LOG_TAG, "attribute: " + attrName + " = " + conversionData.get(attrName));
+                    Log.d(AppsFlyerLibCore.LOG_TAG, "attribute: " + attrName + " = " + conversionData.get(attrName));
                 }
             }
 
             @Override
-            public void onInstallConversionFailure(String errorMessage) {
-                Log.d(AppsFlyerLib.LOG_TAG, "error onInstallConversionFailure : " + errorMessage);
+            public void onConversionDataFail(String errorMessage) {
+                Log.d(AppsFlyerLibCore.LOG_TAG, "error onInstallConversionFailure : " + errorMessage);
             }
 
 
@@ -52,7 +54,7 @@ public class DeepLink extends AppCompatActivity {
             public void onAppOpenAttribution(Map<String, String> conversionData) {
                 String attributionDataText = "Attribution Data: \n";
                 for (String attrName : conversionData.keySet()) {
-                    Log.d(AppsFlyerLib.LOG_TAG, "attribute: " + attrName + " = " +
+                    Log.d(AppsFlyerLibCore.LOG_TAG, "attribute: " + attrName + " = " +
                             conversionData.get(attrName));
                     attributionDataText += conversionData.get(attrName) + "\n";
 
@@ -62,7 +64,7 @@ public class DeepLink extends AppCompatActivity {
 
             @Override
             public void onAttributionFailure(String errorMessage) {
-                Log.d(AppsFlyerLib.LOG_TAG, "error onAttributionFailure : " + errorMessage);
+                Log.d(AppsFlyerLibCore.LOG_TAG, "error onAttributionFailure : " + errorMessage);
             }
         });
 

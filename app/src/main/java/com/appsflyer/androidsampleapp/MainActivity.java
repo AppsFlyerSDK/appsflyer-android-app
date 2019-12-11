@@ -1,14 +1,15 @@
 package com.appsflyer.androidsampleapp;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.appsflyer.*;
+import com.appsflyer.AFInAppEventParameterName;
+import com.appsflyer.AFInAppEventType;
+import com.appsflyer.AppsFlyerLib;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 TextView installData = findViewById(R.id.installDataText);
                 installData.setText(AFApplication.InstallConversionData);
             }
-        } , 2500);
+        } , 5000);
 
     }
 
