@@ -1,4 +1,4 @@
-package com.appsflyer.androidsampleapp;
+package com.contextual.appsters;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppsFlyerLib.getInstance().setDebugLog(true);
+        AppsFlyerLib.getInstance().startTracking(this.getApplication(), "usz4H5kJ4fcMDQdqrjx7Ae");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SetInstallDataText();
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 eventValue.put(AFInAppEventParameterName.REVENUE, 200);
                 eventValue.put(AFInAppEventParameterName.CONTENT_TYPE, "category_a");
                 eventValue.put(AFInAppEventParameterName.CONTENT_ID, "1234567");
-                eventValue.put(AFInAppEventParameterName.CURRENCY, "USD");
+                eventValue.put(AFInAppEventParameterName.CURRENCY, "INR");
                 AppsFlyerLib.getInstance().trackEvent(getApplicationContext(), AFInAppEventType.PURCHASE, eventValue);
             }
         });

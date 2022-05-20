@@ -1,4 +1,4 @@
-package com.appsflyer.androidsampleapp;
+package com.contextual.appsters;
 
 import android.app.Application;
 import android.util.Log;

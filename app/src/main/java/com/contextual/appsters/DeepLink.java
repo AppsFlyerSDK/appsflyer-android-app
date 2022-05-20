@@ -1,4 +1,4 @@
-package com.appsflyer.androidsampleapp;
+package com.contextual.appsters;
 
 import android.os.Bundle;
 import android.os.Handler;
